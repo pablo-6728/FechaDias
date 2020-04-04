@@ -18,7 +18,6 @@ def calculoDia(dia, mes, ano):
     G = int(31*C/12)                 #G es el cociente de 31 veces C entre 12
     H = int(dia + B + D - E + F + G) #H es el dia más B más D menos E más F más G
     I = (H % 7)                 #I es el resto de la división de H entre 7
-    print(A, B, C, D, E, F, G, H, I)
     return (I)
 
 while year >= 1583 and menu != 0:
