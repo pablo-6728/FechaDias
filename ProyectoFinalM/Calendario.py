@@ -6,41 +6,30 @@ year = 1583
 
 menu = 1
 
-def calculoDia(day, month, year):
-    A = (14 - month)/12
-    B = year - A
-    C = month + 12*A - 2
-    D = B/4
-    E = B/100
-    F = B/400
-    G = (C*31)/12
-    H = day + B + D - E + F + G
-    I = H % 7
-    print(I)
+#Si I es 0, el día cae en Domingo; si I es 1, el día cae en Lunes; si I es 2, el día cae en Martes, etc
+
+def calculoDia(dia, mes, ano):
+    A = int((14 - mes)/12)           #A es el cociente de la división de 14 menos el mes entre 12,
+    B = int(ano - A)                 #B es el año menos A
+    C = int(mes + 12*A - 2)          #C es el mes más doce veces A menos 2
+    D = int(B/4)                     #D es el cociente de la división de B entre 4
+    E = int(B/100)                   #E es el cociente de la división de B entre 100
+    F = int(B/400)                   #F es el cociente de la división de B entre 400
+    G = int(31*C/12)                 #G es el cociente de 31 veces C entre 12
+    H = int(dia + B + D - E + F + G) #H es el dia más B más D menos E más F más G
+    I = (H % 7)                 #I es el resto de la división de H entre 7
+    print(A, B, C, D, E, F, G, H, I)
     return (I)
 
 while year >= 1583 and menu != 0:
     try:
-        day = int(input("Escriba el numero de dia(1-31): "))
-        month = int(input("Escriba el numero del mes (1-12): "))
+        day = int(input("Escriba el numero de dia: "))
+        month = int(input("Escriba el numero del mes: "))
         year = int(input("Ingrese un numero de ano (Mayor a 1582): "))
 
         if year < 1583:
             print("LE HE PEDIDO UN ANO MAYOR A 1583!")
             year = 1583
-
-        elif month == 2 and day > 29 and year%4 == 0:
-            print("Su ano es viciesto y su dia de febrero no puede ser mayor a 29")
-
-        elif month == 2 and day > 28 and not(year%4 == 0):
-            print("Su ano es viciesto y su dia no puede ser mayor a 28")
-
-        elif month != 2 and day > 31:
-            print("Su numero es mayor a 31 y no existen meses con mas de 31 dias, lo siento")
-
-        elif month > 12:
-            print("No hay mas de 12 meses")
-
 
         else:
             nuestro_dia = calculoDia(day, month, year)
